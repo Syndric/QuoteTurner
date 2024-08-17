@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteTurner", "QuoteTurner\QuoteTurner.csproj", "{BC13B4B5-F33E-42F1-B4AB-4CE6D9440D29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC13B4B5-F33E-42F1-B4AB-4CE6D9440D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC13B4B5-F33E-42F1-B4AB-4CE6D9440D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC13B4B5-F33E-42F1-B4AB-4CE6D9440D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC13B4B5-F33E-42F1-B4AB-4CE6D9440D29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {611FCA84-BB55-42A7-8764-2BF657635FA9}
+	EndGlobalSection
+EndGlobal
