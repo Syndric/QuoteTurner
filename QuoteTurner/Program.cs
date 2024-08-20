@@ -6,56 +6,40 @@ namespace MTQuoteTools
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("> startup. use help");
-            QuoteFile file = new QuoteFile();
+            Console.WriteLine("> Startup. use help");
+            FileFolder fileFolder = new FileFolder();
             
             while(true)
             {
                 string x = Console.ReadLine();
                 string[] parts = x.Split(' ');
-                if (parts[0] == "help")
+                string cmd = parts[0];
+                string[] options = parts.Skip(1).ToArray();
+
+                if(cmd == "help")
                 {
-                    OpFunc.Help();
-                }
-                else if (parts[0] == "disp")
+                    Cmd.Help();
+                } else if(cmd == "load")
                 {
-                    OpFunc.DispJSON(file);
-                }
-                else if (parts[0] == "load")
+                    fileFolder = Cmd.Load(fileFolder, options);
+                } else if(cmd == "write")
                 {
-                    if (parts[1].Contains("json"))
-                    {
-                        QuoteFile processed = OpFunc.LoadJSON(parts[1]);
-                        file.quotes.AddRange(processed.quotes); //append quotes
-                        file.language = processed.language;
-                        file.groups = processed.groups;
-                    } else if (parts[1].Contains("csv"))
-                    {
-                        file.quotes.AddRange(OpFunc.LoadCSV(parts[1]));
-                    }
-                    
-                    Console.WriteLine("> JSON loaded");
-                } 
-                else if (parts[0] == "write")
+                    Cmd.Write(fileFolder, options);
+                } else if(cmd == "disp")
                 {
-                    string output = OpFunc.WriteJSON(file);
-                    Console.WriteLine($"> Output written to output/{file.language}.json, write to console? (Y/N)");
-                    string y = Console.ReadLine();
-                    if(y.ToUpper() == "Y")
-                    {
-                        Console.WriteLine(output);
-                    }
-                }
-                else if (parts[0] == "clear")
+                    Cmd.Disp(fileFolder, options);
+                } else if(cmd == "clear")
                 {
-                    file = new QuoteFile();
-                    Console.WriteLine("> Cleared");
-                }
-                else if (parts[0] == "verify")
+                    fileFolder = Cmd.Clear(fileFolder, options);
+                } else if(cmd == "unload")
                 {
-                    bool fix = parts[1] == "1";
-                    OpFunc.Verify(file, fix);
-                    Console.WriteLine("> Verified");
+                    fileFolder = Cmd.Unload(fileFolder, options);
+                } else if(cmd == "verify")
+                {
+                    fileFolder = Cmd.Verify(fileFolder, options);
+                } else if(cmd == "langset")
+                {
+                    fileFolder = Cmd.Langset(fileFolder, options);
                 }
             }
         }

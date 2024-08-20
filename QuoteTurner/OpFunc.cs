@@ -35,36 +35,24 @@ namespace Func
             return output;
         }
 
-        public static void DispJSON(QuoteFile file)
+        public static string DispJSON(QuoteFile file)
         {
-            Console.WriteLine(JsonConvert.SerializeObject(file, Formatting.Indented));
+            return JsonConvert.SerializeObject(file, Formatting.Indented);
         }
 
-        public static void Verify(QuoteFile file, bool fix)
+        /*public static QuoteFile Verify(QuoteFile file, bool fix)
         {
             
-            foreach(Quote quote in file.quotes)
+            for(int i = 0; i < file.quotes.Count; i++)
             {
-                Filter.StdFilter(quote, fix);
-                Filter.StartEndFilter(quote, fix);
-                Filter.LengthFilter(quote, fix);
+                Quote x = file.quotes[i];
+                x = Filter.StdFilter(x, fix);
+                x = Filter.StartEndFilter(x, fix);
+                x = Filter.LengthFilter(x, fix);
+                file.quotes[i] = x;
             }
-        }
-
-        public static void Help()
-        {
-            string[] msg = {
-                "> load <path> : load json or csv file into memory",
-                "> write : write memory to output",
-                "> clear : clear memory",
-                "> verify <0 or 1> : verify memory",
-                "> disp: display memory"
-            };
-            foreach(string x in msg)
-            {
-                Console.WriteLine(x);
-            }
-        }
+            return file;
+        }*/
     }
 }
 
